@@ -1,0 +1,17 @@
+{
+  "name": "nopcommerce",
+  "version": "1.0.0",
+  "description": "an end-to-end automation of the pages Registration & PlaceOrder of the nopCommerce shopping site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Md Mehrab Hossain",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.8.1"
+  },
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3"
+  }
+}
