@@ -1,4 +1,4 @@
-describe("Registration_TestSuit_01", () => {
+describe("Registration_TestSuit", () => {
   it("Test_001_PositiveTesting", () => {
     //Registering
     cy.visit("https://training.nop-station.com/");
