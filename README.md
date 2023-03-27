@@ -1,12 +1,6 @@
 # nopCommerce-Reg-Order-Automation
 
-An end-to-end to automation of the pages "Registration" & "PlaceOrder" of the site "nopCommerce" shopping site. 
-
-Framework:          Cypress
-Language:           JavaScript
-Reporting Tool:     Mochawesome
-CI/CD:              Jenkins
-
+#An end-to-end to automation of the pages "Registration" & "PlaceOrder" of the site "nopCommerce" shopping site. 
 
 install the dependencies
 1. npm init -y
