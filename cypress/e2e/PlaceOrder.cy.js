@@ -1,3 +1,5 @@
+import CardHolderData from "../PageObjects/UserCredentials";
+
 describe("PlaceOrder_TestSuit", () => {
   it("Test_001_positive_PlaceOrder", () => {
     cy.visit("https://training.nop-station.com/cell-phones");
@@ -16,42 +18,42 @@ describe("PlaceOrder_TestSuit", () => {
       .uncheck()
       .should("not.be.checked");
 
-    cy.xpath("//input[@id='BillingNewAddress_FirstName']").type("Mehrab");
-    cy.xpath("//input[@id='BillingNewAddress_LastName']").type("Tester 001");
-    cy.xpath("//input[@id='BillingNewAddress_Email']").type(
-      "mehrabTester001@gmail.com"
-    );
-    cy.xpath("//input[@id='BillingNewAddress_Company']").type(
-      "mehrabTestCompany001"
-    );
-    cy.xpath("//select[@id='BillingNewAddress_CountryId']").select(
-      "United States of America"
-    );
-    cy.xpath("//select[@id='BillingNewAddress_StateProvinceId']").select(
-      "Alabama"
-    );
-    cy.xpath("//input[@id='BillingNewAddress_City']").type("Dhaka");
-    cy.xpath("//input[@id='BillingNewAddress_Address1']").type("Gulshan 1");
-    cy.xpath("//input[@id='BillingNewAddress_ZipPostalCode']").type("0001");
-    cy.xpath("//input[@id='BillingNewAddress_PhoneNumber']").type("0160000000");
-    cy.xpath("//button[@onclick='Billing.save()']").click();
-    cy.xpath("//button[@onclick='Shipping.save()']").click();
-    cy.xpath("//input[@id='shippingoption_1']").check().should("be.checked");
+    //Implementing Page Object Model
+    const UserObj = new CardHolderData(); //Initiating Object of the Class
+
+    UserObj.setUserFirstName("Mehrab");
+    UserObj.setUserLastName("Tester 001");
+    UserObj.setUserEmailId("mehrabTester001@gmail.com");
+    UserObj.setUserCompanyName("mehrabTestCompany001");
+    UserObj.setUserCountryId("United States of America");
+    UserObj.setUserStateId("Alabama");
+    UserObj.setUserCity("Dhaka");
+    UserObj.setUserAddress("Gulshan 1");
+    UserObj.setUserZipCode("0001");
+    UserObj.setUserPhoneNumber("0160000000");
+
+    cy.xpath("//button[@onclick='Billing.save()']", { timeout: 6000 }).click();
+    cy.xpath("//input[@id='PickupInStore']").uncheck().should("not.be.checked");
+    cy.get("#shipping-buttons-container > .button-1").click();
     cy.xpath(
       "//button[@class='button-1 shipping-method-next-step-button']"
     ).click();
     cy.xpath("//input[@id='paymentmethod_1']").check();
+    cy.xpath("//input[@id='paymentmethod_1']").should("be.visible");
+    cy.xpath("//input[@id='paymentmethod_1']").check();
     cy.xpath(
       "//button[@class='button-1 payment-method-next-step-button']"
     ).click();
-    cy.get("#CardholderName").type("Mehrab Tester 001");
-    cy.xpath("//input[@id='CardNumber']").type("1111111");
-    cy.xpath("//select[@id='ExpireMonth']").select("5");
-    cy.xpath("//select[@id='ExpireYear']").select("2023");
-    cy.xpath("//input[@id='CardCode']").type("001");
-    cy.xpath(
-      "//button[@class='button-1 payment-info-next-step-button']"
-    ).click();
+
+    UserObj.setUserCardHolderName("Mehrab Tester 001");
+    UserObj.setUserCardNumber("1111111");
+    UserObj.setUserCardExpireMonth("5");
+    UserObj.setUserCardExpireYear("2023");
+    UserObj.setUserCardCode("777");
+
+    cy.xpath("(//button[@class='button-1 payment-info-next-step-button'])[1]", {
+      timeout: 10000,
+    }).click();
     cy.xpath("//button[normalize-space()='Confirm']").click();
     cy.xpath(
       "//strong[normalize-space()='Your order has been successfully processed!']"
