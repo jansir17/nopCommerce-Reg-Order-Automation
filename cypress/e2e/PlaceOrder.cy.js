@@ -55,6 +55,6 @@ describe("PlaceOrder_TestSuit", () => {
     cy.xpath("//button[normalize-space()='Confirm']").click();
     cy.xpath(
       "//strong[normalize-space()='Your order has been successfully processed!']"
-    ).should("contain", "Your order has been successfully processed!");
+    ).should("contain", "Your order has been successfully processed!"); //working fine
   });
 });
