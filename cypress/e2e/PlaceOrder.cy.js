@@ -1,4 +1,4 @@
-import CardHolderData from "../PageObjects/UserCredentials";
+import CardHolderData from "../PageObjectsModel/UserCredentialsLocators";
 
 describe("PlaceOrder_TestSuit", () => {
   it("Test_001_positive_PlaceOrder", () => {
@@ -31,8 +31,8 @@ describe("PlaceOrder_TestSuit", () => {
     UserObj.setUserAddress("Gulshan 1");
     UserObj.setUserZipCode("0001");
     UserObj.setUserPhoneNumber("0160000000");
+    UserObj.setUserBillingSubmit();
 
-    cy.xpath("//button[@onclick='Billing.save()']", { timeout: 6000 }).click();
     cy.xpath("//input[@id='PickupInStore']").uncheck().should("not.be.checked");
     cy.get("#shipping-buttons-container > .button-1").click();
     cy.xpath(

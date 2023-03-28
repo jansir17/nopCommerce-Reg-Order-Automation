@@ -14,10 +14,7 @@ class CardHolderData {
   UserCardExpireMonth = "//select[@id='ExpireMonth']";
   UserCardExpireYear = "//select[@id='ExpireYear']";
   UserCardCode = "//input[@id='CardCode']";
-
-  txtPassword = "//input[@placeholder='Password']";
-  txtSubmitButton = "//button[normalize-space()='Login']";
-  labelMessag = "//h6[normalize-space()='Dashboard']";
+  UserBillingSubmit = "//button[@onclick='Billing.save()']";
 
   setUserFirstName(userfirstname) {
     cy.xpath(this.UserFirstName).type(userfirstname);
@@ -49,6 +46,10 @@ class CardHolderData {
   setUserPhoneNumber(userphonenumber) {
     cy.xpath(this.UserPhoneNumber).type(userphonenumber);
   }
+  setUserBillingSubmit() {
+    cy.xpath(this.UserBillingSubmit, { timeout: 6000 }).click();
+  }
+
   setUserCardHolderName(usercardholdername) {
     cy.xpath(this.UserCardHolderName).type(usercardholdername);
   }
