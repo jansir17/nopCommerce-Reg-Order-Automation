@@ -9,11 +9,10 @@
   "author": "Md Mehrab Hossain",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.8.1"
+    "cypress": "^12.9.0"
   },
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
     "cypress-mochawesome-reporter": "^3.3.0"
   }
 }
-  
